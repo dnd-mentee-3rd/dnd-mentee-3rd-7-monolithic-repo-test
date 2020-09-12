@@ -1,32 +1,85 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
+  <LayoutDefault>
     <router-view />
-  </div>
+  </LayoutDefault>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+<script lang="ts">
+import LayoutDefault from "@/components/common/LayoutDefault.vue";
+import Vue from "vue";
+import { MetaInfo } from "vue-meta";
+export default Vue.extend({
+  components: {
+    LayoutDefault
+  },
+  metaInfo(): MetaInfo {
+    return {
+      title: "그린이",
+      titleTemplate: "%s | https://greene.netlify.app/", // title 뒤에 붙일 공통된 이름 (주로 사이트이름)
+      link: [{ rel: "icon", href: "@/assets/images/favicon.ico" }],
+      meta: [
+        { property: "og:locale", content: "ko_KR" },
+        { charset: "utf-8" },
+        {
+          name: "keywords",
+          content: `그린이 greene 쓰레기 버리는 팁 쓰래기 환경 친환경 `
+        },
+        {
+          name: "author",
+          content: `그린이 greene 쓰레기 버리는 팁 쓰래기 환경 친환경 `
+        },
+        // OPEN GRAPH
+        { property: "og:title", content: "그린이" },
+        { property: "og:site_name", content: "greene" },
+        // { property: "fb:app_id", content: "" },
+        {
+          property: "og:description",
+          content: "그린이 greene 쓰레기 버리는 팁 쓰래기 환경 친환경 ",
+          vmid: "og:description"
+        },
+        { property: "og:type", content: "website" },
+        {
+          property: "og:url",
+          content: "https://greene.netlify.app/",
+          vmid: "og:url"
+        },
+        {
+          property: "og:image",
+          content: "https://greene.netlify.app//public/img/openGraph.png",
+          vmid: "og:image"
+        },
 
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+        // Twitter card
+        { name: "twitter:card", content: "summary" },
+        {
+          name: "twitter:site",
+          content: "https://greene.netlify.app/"
+        },
+        { name: "twitter:title", content: "그린이" },
+        {
+          name: "twitter:description",
+          content: "그린이 greene 쓰레기 버리는 팁 쓰래기 환경 친환경 "
+        },
+        // Your twitter handle, if you have one.
+        // { name: "twitter:creator", content: "@alligatorio" },
+        {
+          name: "twitter:image:src",
+          content: "https://greene.netlify.app//public/img/openGraph.png"
+        },
+        // // Google / Schema.org markup:
+        { itemprop: "name", content: "그린이" },
+        {
+          itemprop: "description",
+          content: "그린이 greene 쓰레기 버리는 팁 쓰래기 환경 친환경 "
+        },
+        {
+          itemprop: "image",
+          content: "https://greene.netlify.app//public/img/openGraph.png"
+        }
+      ]
+    };
   }
-}
-</style>
+});
+</script>
+
+<style lang="scss"></style>
